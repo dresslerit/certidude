@@ -23,12 +23,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 #    UNIFI_UID=999
 
 
-RUN set -ex \
-    && fetchDeps=' \
-        ca-certificates \
-        wget \
-    ' \
-    && add-apt-repository -y ppa:nginx/stable \
+RUN add-apt-repository -y ppa:nginx/stable \
     && apt-get update \
     && apt-get install -y --no-install-recommends $fetchDeps \
     && apt install -y python3-pip python3-markdown python3-pyxattr python3-jinja2 python3-cffi software-properties-common libnginx-mod-nchan nginx-full postfix \
