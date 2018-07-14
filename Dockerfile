@@ -23,12 +23,14 @@ ARG DEBIAN_FRONTEND=noninteractive
 #    UNIFI_UID=999
 
 
-RUN add-apt-repository -y ppa:nginx/stable \
+RUN apt-get update \
+    && apt-get install software-properties-common -y \
+    && add-apt-repository -y ppa:nginx/stable \
     && apt-get update \
-    && apt install -y python3-pip python3-markdown python3-pyxattr python3-jinja2 python3-cffi software-properties-common libnginx-mod-nchan nginx-full 
+    && apt install -y python3-pip python3-markdown python3-pyxattr python3-jinja2 python3-cffi software-properties-common libnginx-mod-nchan nginx-full postfix
 #    postfix \
 #    && cd / \
-#    && git clone https://github.com/laurivosandi/certidude \
+#    && git clone https://github.com/dresslerit/certidude \
 #    && cd certidude \
 #    && pip3 install -e .
 
