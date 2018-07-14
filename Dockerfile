@@ -4,22 +4,6 @@ FROM ubuntu:xenial
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-#ENV BASEDIR=/usr/lib/unifi \
-#    DATADIR=/unifi/data \
-#    LOGDIR=/unifi/log \
-#    CERTDIR=/unifi/cert \
-#    RUNDIR=/var/run/unifi \
-#    ODATADIR=/var/lib/unifi \
-#    OLOGDIR=/var/log/unifi \
-#    CERTNAME=cert.pem \
-#    CERT_PRIVATE_NAME=privkey.pem \
-#    CERT_IS_CHAIN=false \
-#    GOSU_VERSION=1.10 \
-#    BIND_PRIV=true \
-#    RUNAS_UID0=true \
-#    UNIFI_GID=999 \
-#    UNIFI_UID=999
-
 ADD . /certidude
 
 WORKDIR /certidude
@@ -29,8 +13,10 @@ RUN apt-get update \
     && add-apt-repository -y ppa:nginx/stable \
     && apt-get update \
     && apt install -y python3-pip python3-markdown python3-pyxattr python3-jinja2 python3-cffi software-properties-common libnginx-mod-nchan nginx-full postfix \
-    && pip3 install -e .
-
+    && pip3 install -e . \
+    && export LC_ALL=C.UTF-8 \
+    && export LANG=C.UTF-8 \
+    && certidude provision authority
 
 
 
