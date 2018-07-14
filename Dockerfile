@@ -24,12 +24,11 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 
 #RUN add-apt-repository -y ppa:nginx/stable
-RUN apt-get update
-RUN apt install -y python3-pip python3-markdown python3-pyxattr python3-jinja2 python3-cffi software-properties-common libnginx-mod-nchan nginx-full postfix
+RUN apt-get update && apt install -y python3-pip python3-markdown python3-pyxattr python3-jinja2 python3-cffi software-properties-common libnginx-mod-nchan nginx-full postfix
 #RUN git clone https://github.com/laurivosandi/certidude \
 #RUN cd certidude \
-RUN pip3 install -e .
-RUN certidude provision authority
+#RUN pip3 install -e .
+#RUN certidude provision authority
 
 
 #EXPOSE 6789/tcp 8080/tcp 8443/tcp 8880/tcp 8843/tcp 3478/udp
