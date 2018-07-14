@@ -23,11 +23,12 @@ ARG DEBIAN_FRONTEND=noninteractive
 #    UNIFI_UID=999
 
 
-RUN add-apt-repository -y ppa:nginx/stable \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends $fetchDeps \
-    && apt install -y python3-pip python3-markdown python3-pyxattr python3-jinja2 python3-cffi software-properties-common libnginx-mod-nchan nginx-full postfix \
-    && pip3 install -e .
+RUN add-apt-repository -y ppa:nginx/stable
+RUN apt-get update
+RUN apt install -y python3-pip python3-markdown python3-pyxattr python3-jinja2 python3-cffi software-properties-common libnginx-mod-nchan nginx-full postfix
+#RUN git clone https://github.com/laurivosandi/certidude \
+#RUN cd certidude \
+RUN pip3 install -e .
 
 
 #EXPOSE 6789/tcp 8080/tcp 8443/tcp 8880/tcp 8843/tcp 3478/udp
@@ -40,8 +41,6 @@ RUN add-apt-repository -y ppa:nginx/stable \
 #ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
 #CMD ["unifi"]
-
-CMD ["echo tmp"]
 
 # execute the conroller directly without using the service
 #ENTRYPOINT ["/usr/bin/java", "-Xmx${JVM_MAX_HEAP_SIZE}", "-jar", "/usr/lib/unifi/lib/ace.jar"]
