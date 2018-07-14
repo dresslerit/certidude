@@ -27,6 +27,7 @@ WORKDIR /certidude
 RUN apt-get update \
     && apt-get install software-properties-common -y \
     && add-apt-repository -y ppa:nginx/stable \
+    && apt-get update \
     && apt install -y python3-pip python3-markdown python3-pyxattr python3-jinja2 python3-cffi software-properties-common libnginx-mod-nchan nginx-full postfix \
     && pip3 install -e .
 
