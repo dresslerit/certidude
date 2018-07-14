@@ -23,9 +23,9 @@ ARG DEBIAN_FRONTEND=noninteractive
 #    UNIFI_UID=999
 
 
-RUN add-apt-repository -y ppa:nginx/stable
+#RUN add-apt-repository -y ppa:nginx/stable
 RUN apt-get update
-RUN apt install -y python3-pip python3-markdown python3-pyxattr python3-jinja2 python3-cffi software-properties-common libnginx-mod-nchan nginx-full postfix
+RUN apt install -y python3-pip python3-markdown python3-pyxattr python3-jinja2 python3-cffi software-properties-common libnginx-mod-nchan nginx-full postfix nginx
 #RUN git clone https://github.com/laurivosandi/certidude \
 #RUN cd certidude \
 RUN pip3 install -e .
