@@ -27,7 +27,7 @@ RUN add-apt-repository -y ppa:nginx/stable \
     && apt-get update \
     && apt-get install -y --no-install-recommends $fetchDeps \
     && apt install -y python3-pip python3-markdown python3-pyxattr python3-jinja2 python3-cffi software-properties-common libnginx-mod-nchan nginx-full postfix \
-    && git clone https://github.com/laurivosandi/certidude \
+    && git clone https://github.com/laurivosandi/certidude
     && cd certidude \
     && pip3 install -e .
 
